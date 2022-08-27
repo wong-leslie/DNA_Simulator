@@ -41,14 +41,17 @@ const pAeqourFactory = (specimenNum, dna) => {
         }, 
 
         compareDNA(otherpAeqourObj){
-            for(let i =0; i< otherpAeqourObj.dna.length; i++){
-                for(let j = 0; j < this.dna.length; j++){
-                    
-                }
+            let count = 0;
+            // let percentage = count/otherpAeqourObj.dna.length;
+            for(let i = 0; i< this.dna.length; i++){
+                if(otherpAeqourObj.dna[i] === this.dna[i]){
+                    count += 1;
+                }           
             }
-
+            const percent = Math.floor(count/(this.dna.length) * 100);
+            console.log(`Specimen #${this.specimenNum} and Specimen #${otherpAeqourObj.specimenNum} have ${percent}% DNA in common.`)
         }
     }
 }
 
-console.log(pAeqourFactory(1, mockUpStrand()).mutate());
+console.log(pAeqourFactory(4, mockUpStrand()).compareDNA(pAeqourFactory(7, mockUpStrand())));
